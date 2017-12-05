@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Comment Box</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="commentbox.js"></script>
+    <style>
+        html,body{
+            width: 100%;
+        }
+        .form-division{
+            margin: auto 30%;
+        }
+        input,textarea{
+            width: 250px;
+            margin: 1em 5em;
+        }
+        input{
+           
+            height: 30px;
+        }
+        ul li{
+            padding: 10px;
+            list-style-type: none;
+            color:  #006bb3;
+            border-bottom: 1px solid #006bb3;
+        }
+        input[type=submit]{
+            color: #fff;
+            background-color: #006bb3;
+            border: 0px;
+        }
+    </style>
+</head>
+<body ng-app="myApp" ng-controller="myctrl">
+   <div class="form-division">
+    <h1>Comment Box</h1>
+    <form ng-submit="comments(form)">
+            <table>
+                    <tr>
+                        <td>
+                                <label>User Name:</label>
+                        </td>
+                        <td>
+                                <input type="text" ng-model="form.username">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                                <label>Your Comment:</label>
+                        </td>
+                        <td>           
+                    <textarea rows="5" ng-model="form.comment"> 
+                        </textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                                <input type="submit"value="Post Comment">
+                        </td>
+                    </tr>
+                </table>       
+    </form>  
+    <h2>Comments:</h2>  
+    <ul>
+        <li ng-repeat="item in comment">
+           <p><b>User :</b> {{item.username}}</p>
+            <p><b>Comment :</b> {{item.comment}}</p>
+        </li>
+    </ul>
+    </div>
+</body>
+</html>
