@@ -38,14 +38,15 @@
 <body ng-app="myApp" ng-controller="myctrl">
    <div class="form-division">
     <h1>Comment Box</h1>
-    <form ng-submit="comments(form)">
+    <form ng-submit="comments(form)" name="commentForm" novalidate>
             <table>
                     <tr>
                         <td>
                                 <label>User Name:</label>
                         </td>
                         <td>
-                                <input type="text" ng-model="form.username">
+                                <input type="text" ng-model="form.username" name="user" required>
+                                <span style = "color:red" ng-show="commentForm.user.$invalid && commentForm.user.$touched">Name is required</span>
                         </td>
                     </tr>
                     <tr>
@@ -53,7 +54,7 @@
                                 <label>Your Comment:</label>
                         </td>
                         <td>           
-                    <textarea rows="5" ng-model="form.comment"> 
+                    <textarea rows="5" ng-model="form.comment" name="comment" required> 
                         </textarea>
                         </td>
                     </tr>
@@ -61,7 +62,7 @@
                         <td>
                         </td>
                         <td>
-                                <input type="submit"value="Post Comment">
+                                <input type="submit"value="Post Comment" ng-disabled="commentForm.user.$invalid">
                         </td>
                     </tr>
                 </table>       
